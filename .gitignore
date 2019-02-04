@@ -5,7 +5,7 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 #Ignore db files
-*.sqlite
+/db
 
 # Ignore all logfiles and tempfiles.
 /log/*
