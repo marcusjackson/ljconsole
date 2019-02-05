@@ -5,13 +5,6 @@ CREATE TABLE m_block (
     created_at timestamp DEFAULT CURRENT_TIMESTAMP,
     modified_at timestamp DEFAULT CURRENT_TIMESTAMP
 );
-CREATE TRIGGER [TR_m_block_AfterUpdate_ModifiedAt]
-AFTER UPDATE
-ON m_block
-FOR EACH ROW
-BEGIN
-UPDATE m_block SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
-END;
 
 DROP TABLE IF EXISTS entry;
 CREATE TABLE entry (
@@ -20,13 +13,6 @@ CREATE TABLE entry (
     created_at timestamp DEFAULT CURRENT_TIMESTAMP,
     modified_at timestamp DEFAULT CURRENT_TIMESTAMP
 );
-CREATE TRIGGER [TR_entry_AfterUpdate_ModifiedAt]
-AFTER UPDATE
-ON entry
-FOR EACH ROW
-BEGIN
-UPDATE entry SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
-END;
 
 DROP TABLE IF EXISTS block;
 CREATE TABLE block (
@@ -38,13 +24,6 @@ CREATE TABLE block (
     created_at timestamp DEFAULT CURRENT_TIMESTAMP,
     modified_at timestamp DEFAULT CURRENT_TIMESTAMP
 );
-CREATE TRIGGER [TR_block_AfterUpdate_ModifiedAt]
-AFTER UPDATE
-ON block
-FOR EACH ROW
-BEGIN
-UPDATE block SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
-END;
 
 DROP TABLE IF EXISTS grouping;
 CREATE TABLE grouping (
@@ -53,13 +32,6 @@ CREATE TABLE grouping (
     created_at timestamp DEFAULT CURRENT_TIMESTAMP,
     modified_at timestamp DEFAULT CURRENT_TIMESTAMP
 );
-CREATE TRIGGER [TR_grouping_AfterUpdate_ModifiedAt]
-AFTER UPDATE
-ON grouping
-FOR EACH ROW
-BEGIN
-UPDATE grouping SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
-END;
 
 DROP TABLE IF EXISTS entry_grouping;
 CREATE TABLE entry_grouping (
@@ -69,13 +41,6 @@ CREATE TABLE entry_grouping (
     created_at timestamp DEFAULT CURRENT_TIMESTAMP,
     modified_at timestamp DEFAULT CURRENT_TIMESTAMP
 );
-CREATE TRIGGER [TR_entry_grouping_AfterUpdate_ModifiedAt]
-AFTER UPDATE
-ON entry_grouping
-FOR EACH ROW
-BEGIN
-UPDATE entry_grouping SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
-END;
 
 DROP TABLE IF EXISTS grouping_keyword;
 CREATE TABLE grouping_keyword (
@@ -85,13 +50,6 @@ CREATE TABLE grouping_keyword (
     created_at timestamp DEFAULT CURRENT_TIMESTAMP,
     modified_at timestamp DEFAULT CURRENT_TIMESTAMP
 );
-CREATE TRIGGER [TR_grouping_keyword_AfterUpdate_ModifiedAt]
-AFTER UPDATE
-ON grouping_keyword
-FOR EACH ROW
-BEGIN
-UPDATE grouping_keyword SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
-END;
 
 DROP TABLE IF EXISTS tag;
 CREATE TABLE tag (
@@ -100,13 +58,6 @@ CREATE TABLE tag (
     created_at timestamp DEFAULT CURRENT_TIMESTAMP,
     modified_at timestamp DEFAULT CURRENT_TIMESTAMP
 );
-CREATE TRIGGER [TR_tag_AfterUpdate_ModifiedAt]
-AFTER UPDATE
-ON tag
-FOR EACH ROW
-BEGIN
-UPDATE tag SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
-END;
 
 DROP TABLE IF EXISTS grouping_tag;
 CREATE TABLE grouping_tag (
@@ -116,13 +67,6 @@ CREATE TABLE grouping_tag (
     created_at timestamp DEFAULT CURRENT_TIMESTAMP,
     modified_at timestamp DEFAULT CURRENT_TIMESTAMP
 );
-CREATE TRIGGER [TR_grouping_tag_AfterUpdate_ModifiedAt]
-AFTER UPDATE
-ON grouping_tag
-FOR EACH ROW
-BEGIN
-UPDATE grouping_tag SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
-END;
 
 DROP TABLE IF EXISTS tag_keyword;
 CREATE TABLE tag_keyword (
@@ -132,13 +76,6 @@ CREATE TABLE tag_keyword (
     created_at timestamp DEFAULT CURRENT_TIMESTAMP,
     modified_at timestamp DEFAULT CURRENT_TIMESTAMP
 );
-CREATE TRIGGER [TR_tag_keyword_AfterUpdate_ModifiedAt]
-AFTER UPDATE
-ON tag_keyword
-FOR EACH ROW
-BEGIN
-UPDATE tag_keyword SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
-END;
 
 DROP TABLE IF EXISTS nested_tag;
 CREATE TABLE nested_tag (
@@ -149,13 +86,6 @@ CREATE TABLE nested_tag (
     created_at timestamp DEFAULT CURRENT_TIMESTAMP,
     modified_at timestamp DEFAULT CURRENT_TIMESTAMP
 );
-CREATE TRIGGER [TR_nested_tag_AfterUpdate_ModifiedAt]
-AFTER UPDATE
-ON nested_tag
-FOR EACH ROW
-BEGIN
-UPDATE nested_tag SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
-END;
 
 DROP TABLE IF EXISTS entity;
 CREATE TABLE entity (
@@ -165,13 +95,6 @@ CREATE TABLE entity (
     created_at timestamp DEFAULT CURRENT_TIMESTAMP,
     modified_at timestamp DEFAULT CURRENT_TIMESTAMP
 );
-CREATE TRIGGER [TR_entity_AfterUpdate_ModifiedAt]
-AFTER UPDATE
-ON entity
-FOR EACH ROW
-BEGIN
-UPDATE entity SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
-END;
 
 DROP TABLE IF EXISTS location;
 CREATE TABLE location (
@@ -181,13 +104,6 @@ CREATE TABLE location (
     created_at timestamp DEFAULT CURRENT_TIMESTAMP,
     modified_at timestamp DEFAULT CURRENT_TIMESTAMP
 );
-CREATE TRIGGER [TR_location_AfterUpdate_ModifiedAt]
-AFTER UPDATE
-ON location
-FOR EACH ROW
-BEGIN
-UPDATE location SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
-END;
 
 DROP TABLE IF EXISTS entity_location;
 CREATE TABLE entity_location (
@@ -199,13 +115,6 @@ CREATE TABLE entity_location (
     created_at timestamp DEFAULT CURRENT_TIMESTAMP,
     modified_at timestamp DEFAULT CURRENT_TIMESTAMP
 );
-CREATE TRIGGER [TR_entity_location_AfterUpdate_ModifiedAt]
-AFTER UPDATE
-ON entity_location
-FOR EACH ROW
-BEGIN
-UPDATE entity_location SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
-END;
 
 DROP TABLE IF EXISTS purpose;
 CREATE TABLE purpose (
@@ -215,13 +124,6 @@ CREATE TABLE purpose (
     created_at timestamp DEFAULT CURRENT_TIMESTAMP,
     modified_at timestamp DEFAULT CURRENT_TIMESTAMP
 );
-CREATE TRIGGER [TR_purpose_AfterUpdate_ModifiedAt]
-AFTER UPDATE
-ON purpose
-FOR EACH ROW
-BEGIN
-UPDATE purpose SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
-END;
 
 DROP TABLE IF EXISTS subject;
 CREATE TABLE subject (
@@ -231,13 +133,6 @@ CREATE TABLE subject (
     created_at timestamp DEFAULT CURRENT_TIMESTAMP,
     modified_at timestamp DEFAULT CURRENT_TIMESTAMP
 );
-CREATE TRIGGER [TR_subject_AfterUpdate_ModifiedAt]
-AFTER UPDATE
-ON subject
-FOR EACH ROW
-BEGIN
-UPDATE subject SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
-END;
 
 DROP TABLE IF EXISTS time;
 CREATE TABLE time (
@@ -249,6 +144,128 @@ CREATE TABLE time (
     created_at timestamp DEFAULT CURRENT_TIMESTAMP,
     modified_at timestamp DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Triggers for auto update of modified_at column in each table.
+CREATE TRIGGER [TR_m_block_AfterUpdate_ModifiedAt]
+AFTER UPDATE
+ON m_block
+FOR EACH ROW
+BEGIN
+UPDATE m_block SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
+END;
+
+CREATE TRIGGER [TR_entry_AfterUpdate_ModifiedAt]
+AFTER UPDATE
+ON entry
+FOR EACH ROW
+BEGIN
+UPDATE entry SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
+END;
+
+CREATE TRIGGER [TR_block_AfterUpdate_ModifiedAt]
+AFTER UPDATE
+ON block
+FOR EACH ROW
+BEGIN
+UPDATE block SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
+END;
+
+CREATE TRIGGER [TR_grouping_AfterUpdate_ModifiedAt]
+AFTER UPDATE
+ON grouping
+FOR EACH ROW
+BEGIN
+UPDATE grouping SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
+END;
+
+CREATE TRIGGER [TR_entry_grouping_AfterUpdate_ModifiedAt]
+AFTER UPDATE
+ON entry_grouping
+FOR EACH ROW
+BEGIN
+UPDATE entry_grouping SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
+END;
+
+CREATE TRIGGER [TR_grouping_keyword_AfterUpdate_ModifiedAt]
+AFTER UPDATE
+ON grouping_keyword
+FOR EACH ROW
+BEGIN
+UPDATE grouping_keyword SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
+END;
+
+CREATE TRIGGER [TR_tag_AfterUpdate_ModifiedAt]
+AFTER UPDATE
+ON tag
+FOR EACH ROW
+BEGIN
+UPDATE tag SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
+END;
+
+CREATE TRIGGER [TR_grouping_tag_AfterUpdate_ModifiedAt]
+AFTER UPDATE
+ON grouping_tag
+FOR EACH ROW
+BEGIN
+UPDATE grouping_tag SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
+END;
+
+CREATE TRIGGER [TR_tag_keyword_AfterUpdate_ModifiedAt]
+AFTER UPDATE
+ON tag_keyword
+FOR EACH ROW
+BEGIN
+UPDATE tag_keyword SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
+END;
+
+CREATE TRIGGER [TR_nested_tag_AfterUpdate_ModifiedAt]
+AFTER UPDATE
+ON nested_tag
+FOR EACH ROW
+BEGIN
+UPDATE nested_tag SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
+END;
+
+CREATE TRIGGER [TR_entity_AfterUpdate_ModifiedAt]
+AFTER UPDATE
+ON entity
+FOR EACH ROW
+BEGIN
+UPDATE entity SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
+END;
+
+CREATE TRIGGER [TR_location_AfterUpdate_ModifiedAt]
+AFTER UPDATE
+ON location
+FOR EACH ROW
+BEGIN
+UPDATE location SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
+END;
+
+CREATE TRIGGER [TR_entity_location_AfterUpdate_ModifiedAt]
+AFTER UPDATE
+ON entity_location
+FOR EACH ROW
+BEGIN
+UPDATE entity_location SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
+END;
+
+CREATE TRIGGER [TR_purpose_AfterUpdate_ModifiedAt]
+AFTER UPDATE
+ON purpose
+FOR EACH ROW
+BEGIN
+UPDATE purpose SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
+END;
+
+CREATE TRIGGER [TR_subject_AfterUpdate_ModifiedAt]
+AFTER UPDATE
+ON subject
+FOR EACH ROW
+BEGIN
+UPDATE subject SET modified_at = CURRENT_TIMESTAMP WHERE id = old.id;
+END;
+
 CREATE TRIGGER [TR_time_AfterUpdate_ModifiedAt]
 AFTER UPDATE
 ON time
