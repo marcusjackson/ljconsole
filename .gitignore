@@ -7,6 +7,9 @@
 #Ignore db files
 /db
 
+#Temp ignore test files
+/test
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
