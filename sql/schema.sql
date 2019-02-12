@@ -10,6 +10,8 @@ DROP TABLE IF EXISTS entry;
 CREATE TABLE entry (
     id integer PRIMARY KEY,
     name varchar,
+    start datetime,
+    end datetime ,
     created_at timestamp DEFAULT CURRENT_TIMESTAMP,
     modified_at timestamp DEFAULT CURRENT_TIMESTAMP
 );
@@ -29,6 +31,8 @@ DROP TABLE IF EXISTS grouping;
 CREATE TABLE grouping (
     id integer PRIMARY KEY,
     name varchar,
+    start datetime,
+    end datetime ,
     created_at timestamp DEFAULT CURRENT_TIMESTAMP,
     modified_at timestamp DEFAULT CURRENT_TIMESTAMP
 );
